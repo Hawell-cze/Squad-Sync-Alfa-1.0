@@ -1,0 +1,81 @@
+<div class="content">
+  <div class="headers">
+  <h1>Squad Sync</h1>
+  <h2 >Vel svému týmu</h2>
+      <div class="orb"></div>
+    </div>
+  <div class="input-container" *ngIf="false">
+    
+    <input 
+      type="text" 
+      id="token-input" 
+      placeholder="XDF45TK" 
+      [value]="token" 
+      (input)="handleChange($event)" 
+      maxlength="7" />
+    <!-- Entita kroužící kolem inputu -->
+    <div class="orb"></div>
+    <!-- Tlačítko "Pokračovat" -->
+    <button 
+      id="submit-button" 
+      (click)="handleSubmit()"
+      [ngClass]="{'show-button': showButton}"
+      >
+      Pokračovat
+    </button>
+    <!-- Chybová zpráva pro neplatný token -->
+<p *ngIf="showFormatError" class="error-message">
+  Token musí obsahovat 7 znaků (velká písmena a čísla).
+</p>
+<p *ngIf="showTokenNotFound" class="error-message">
+  Token neexistuje nebo session není aktivní.
+</p>
+  </div>
+
+  <!-- Podmíněné zobrazení odkazů nebo přihlášeného uživatele -->
+<div class="links" *ngIf="!(isLoggedIn$ | async); else userLoggedIn">
+    <a href="#" id="open-login" (click)="openLoginModal($event)">Mám účet</a> /
+    <a href="#" id="open-register" (click)="openRegisterModal($event)">Chci účet</a>
+  </div>
+<ng-template #userLoggedIn>
+  <div class="links">
+    {{ user?.userName }}
+ - <a href="#" (click)="openSessionModal($event)">Vytvořit session</a>
+    – <a href="#" (click)="handleLogOut($event)">Odhlásit se</a>
+  </div>
+  <div class="session-actions" *ngIf="user">
+  <button (click)="openSessionList('commander', $event)">Moje sessiony</button>
+  <button (click)="openSessionList('user', $event)">Připojené sessiony</button>
+  <button (click)="openSessionList('all', $event)">Veřejné sessiony</button>
+</div>
+</ng-template>
+
+  <!-- Modální okna – předpokládáme, že mají deklarované Input (isOpen) a Output (onClose, onLogin) -->
+  <app-login-modal 
+    [isOpen]="isLoginOpen"
+    (onClose)="closeLoginModal()"
+    (onLogin)="onLogin($event)">
+  </app-login-modal>
+  
+  <app-register-modal 
+    [isOpen]="isRegisterOpen" 
+    (onClose)="closeRegisterModal()"
+    (onLogin)="onLogin($event)">
+    
+  </app-register-modal>
+
+<app-create-session-modal
+  *ngIf="user"
+  [isOpen]="isCreateSessionOpen"
+  [commanderId]="user.id"
+  (onClose)="isCreateSessionOpen = false">
+</app-create-session-modal>
+
+<app-session-list-modal
+  *ngIf="user"
+  [isOpen]="isSessionListOpen"
+  [userId]="user.id"
+  [mode]="sessionListMode"
+  (onClose)="isSessionListOpen = false">
+</app-session-list-modal>
+</div>

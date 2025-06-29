@@ -1,0 +1,86 @@
+.planet-loader {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: auto;
+}
+
+.central-star {
+  width: 30px;
+  height: 30px;
+  background-color: #32CD32; /* zelená jako tvoje heading barva */
+  border-radius: 50%;
+  position: absolute;
+  top: 45px;
+  left: 45px;
+  box-shadow: 0 0 12px #32CD32;
+}
+
+.orbit {
+  width: 100%;
+  height: 100%;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: spin 2.5s linear infinite;
+}
+
+.planet {
+  width: 14px;
+  height: 14px;
+  background-color: #1e90ff; /* modrá jako tlačítka */
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px #3ea0ff;
+}
+
+.planet-loader.small {
+  width: 60px;
+  height: 60px;
+}
+
+.planet-loader.small .central-star {
+  width: 16px;
+  height: 16px;
+  top: 22px;
+  left: 22px;
+  box-shadow: 0 0 6px #32CD32;
+}
+
+.planet-loader.small .orbit {
+  width: 100%;
+  height: 100%;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: spin 2.5s linear infinite;
+}
+
+.planet-loader.small .planet {
+  width: 8px;
+  height: 8px;
+  background-color: #1e90ff;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 4px #3ea0ff;
+}
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

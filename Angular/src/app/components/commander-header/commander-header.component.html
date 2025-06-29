@@ -1,0 +1,22 @@
+<header class="header">
+  <div class="header-content">
+    <h1 (click)="onClickLogo()">Squad Sync</h1>
+    <div class="stats">
+      <div class="stat-item">
+        👥 <span>{{ total }}</span>
+      </div>
+      <div class="stat-item">
+        🟢 <span>{{ active }}</span>
+      </div>
+      <div class="stat-item">
+        🟠 <span>{{ enroute }}</span>
+      </div>
+      <div class="stat-item">
+        🔴 <span>{{ destroyed }}</span>
+      </div>
+    </div>
+    <div class="enemy-info">
+      ⚔️ Nepřátelský tým: <span>{{ enemy }}</span>
+    </div>
+  </div>
+</header>

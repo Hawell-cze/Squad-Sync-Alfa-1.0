@@ -1,0 +1,54 @@
+@import "../../modals/login-modal/login-modal.component.css";
+
+
+.no-results {
+  text-align: center;
+  color: #ccc;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  color: #fff;
+}
+
+th {
+  background-color: #1e2c3a;
+}
+
+tr:nth-child(even) {
+  background-color: #1a2735;
+}
+
+button {
+  padding: 6px 10px;
+  background-color: #32CD32;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  color: white;
+}
+
+button:hover {
+  background-color: #28a428;
+}
+
+.join-status p {
+  color: #fff;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+.join-status-msg {
+  color: #fff;
+  font-weight: bold;
+  margin: 1rem 0;
+}

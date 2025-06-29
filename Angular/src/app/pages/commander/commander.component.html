@@ -1,0 +1,55 @@
+<!-- Loader -->
+<div *ngIf="isLoading">
+  <app-ui-loader></app-ui-loader>
+</div>
+
+<!-- Hlavní obsah -->
+<div *ngIf="!isLoading && members.length > 0" class="commander-container">
+  <app-commander-header 
+    [total]="members.length"
+    [active]="activeCount"
+    [enroute]="enrouteCount"
+    [destroyed]="destroyedCount"
+    enemy="Nepřátelský tým">
+  </app-commander-header>
+
+  <div class="card-container">
+<ng-container *ngFor="let member of visibleMembers">
+  <app-user-ship-card 
+    [member]="member" 
+    (cardClick)="onCardClick($event)">
+  </app-user-ship-card>
+</ng-container>
+
+  </div>
+</div>
+
+<!-- Fallback pokud nejsou členové -->
+<div *ngIf="!isLoading && members.length === 0" class="empty-message">
+  <p>Žádní členové zatím nejsou připojeni.</p>
+</div>
+
+<!-- Modal pro schválení připojení -->
+<div class="modal" *ngIf="isCommander && pendingUsers.length > 0" (click)="pendingUsers = []">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <span class="close" (click)="pendingUsers = []">&times;</span>
+    <h2>Žádosti o připojení</h2>
+
+    <div *ngIf="pendingUsers.length === 0">
+      <p>Žádní čekající uživatelé</p>
+    </div>
+
+    <ul *ngIf="pendingUsers.length > 0" style="list-style: none; padding: 0">
+      <li *ngFor="let user of pendingUsers" style="margin-bottom: 1rem;">
+        <span style="display: block; color: #fff; margin-bottom: 0.5rem;">
+          {{ user.userName }}
+        </span>
+        <div style="display: flex; gap: 8px;">
+          <button (click)="approveUser(user)">✅ Schválit</button>
+          <button (click)="rejectUser(user)">❌ Odmítnout</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+

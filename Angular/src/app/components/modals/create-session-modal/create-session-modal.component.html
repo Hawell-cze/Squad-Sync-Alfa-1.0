@@ -1,0 +1,31 @@
+<div class="modal" *ngIf="isOpen" (click)="close()">
+  <div class="modal-content" (click)="($event.stopPropagation())">
+    <span class="close" (click)="close()">&times;</span>
+    <h2>Vytvoření session</h2>
+
+    <!-- Pokud session ještě není vytvořená -->
+    <form *ngIf="!sessionResult" (submit)="handleSubmit($event)">
+      <input
+        type="text"
+        placeholder="Název session"
+        [(ngModel)]="sessionName"
+        name="sessionName"
+        required
+      />
+      <button type="submit">Vytvořit</button>
+    </form>
+
+    <!-- Chybová hláška -->
+    <div *ngIf="error" class="error-msg">{{ error }}</div>
+
+    <!-- Výsledek po vytvoření -->
+    <div *ngIf="sessionResult" class="result">
+      <p><strong>Název:</strong> {{ sessionResult.sessionName }}</p>
+      <p>
+        <strong>Token:</strong> {{ sessionResult.token }}
+        <button (click)="copyToken()">📋 Kopírovat</button>
+      </p>
+      <button (click)="enterCommander()">Vstoupit do Commandera</button>
+    </div>
+  </div>
+</div>

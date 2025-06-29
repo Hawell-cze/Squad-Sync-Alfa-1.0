@@ -1,0 +1,39 @@
+.header {
+    background: radial-gradient(circle at center, #0d1b2a, #020c1b);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .header h1 {
+    color: #32CD32;
+    font-size: 24px;
+    margin-right: 20px;
+  }
+  
+  .stats {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .stat-item {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+  }
+  
+  .enemy-info {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+  }
+  

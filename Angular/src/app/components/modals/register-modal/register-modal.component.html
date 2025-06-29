@@ -1,0 +1,43 @@
+<div class="modal" *ngIf="isOpen" (click)="closeModal()">
+  <div class="modal-content" (click)="stopPropagation($event)">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Registrace</h2>
+    <div
+      *ngIf="message"
+      [ngClass]="{
+        'success-msg': messageType === 'success',
+        'error-msg': messageType === 'error'
+      }"
+    >
+      {{ message }}
+    </div>
+
+    <form *ngIf="!message" (submit)="handleSubmit($event)">
+      <input
+        type="text"
+        placeholder="Uživatelské jméno"
+        [(ngModel)]="username"
+        name="username"
+        required
+      />
+      <input
+        type="email"
+        placeholder="E-mail"
+        [(ngModel)]="email"
+        name="email"
+        required
+      />
+      <input
+        type="password"
+        placeholder="Heslo"
+        [(ngModel)]="password"
+        name="password"
+        required
+      />
+      <button type="submit">Registrovat se</button>
+    </form>
+    <div *ngIf="isLoading" class="loader-modal-overlay">
+  <app-ui-loader></app-ui-loader>
+</div>
+  </div>
+</div>

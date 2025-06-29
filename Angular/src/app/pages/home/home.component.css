@@ -1,0 +1,341 @@
+/* Globální styl pro všechna zařízení */
+.content {
+    position: relative;
+    background: radial-gradient(circle at center, #0d1b2a, #020c1b);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    margin: 0;
+    overflow: hidden;
+  }
+  
+  .headers {
+    position:relative;
+  }
+  /* Nadpisy */
+ .content h1 {
+    color: #32CD32;
+    font-size: 64px ;
+    margin: 0;
+    animation: slowGlow 10s infinite;
+  }
+  
+  h2 {
+    color: #ffffff;
+    font-size: 24px;
+    margin: 10px 0;
+    animation: fadeIn 2s ease-out;
+  }
+  
+  /* Kontejner pro vstupní pole a tlačítko */
+  .input-container {
+    position: relative;
+    margin-top: 20px;
+    width: 320px;
+    height: 80px; /* Upravená výška pro předpřipravený prostor */
+  }
+  
+  /* Vstupní pole pro token */
+  input[type="text"]#token-input {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border: 2px solid #32CD32; /* Limetkově zelené ohraničení */
+    border-radius: 5px;
+    outline: none;
+    text-align: center;
+    background-color: #12243a;
+    color: #fff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    box-sizing: border-box;
+  }
+  
+  input[type="text"]#token-input::placeholder {
+    color: #999;
+  }
+  
+  /* Chybová zpráva pro neplatný token */
+  .error-message {
+    color: #ff4d4d;
+    margin-top: 5px;
+    font-size: 14px;
+  }
+  
+  /* Entita kroužící kolem inputu */
+  .orb {
+    position: absolute;
+    top: -10px;
+    left: calc(50% - 10px);
+    width: 20px;
+    height: 20px;
+    background-color: #32CD32;
+    border-radius: 50%;
+    animation: orbit 12s infinite;
+  }
+  
+  /* Tlačítko "Pokračovat" */
+  #submit-button {
+    position: absolute;
+    top: 53px;
+    left: 50%;
+    width: 50%; /* Nastavíme šířku na 50 % */
+    padding: 12px 0;
+    font-size: 18px;
+    color: #fff;
+    background-color: #32CD32;
+    border: none;
+    border-radius: 0 0 5px 5px;
+    cursor: pointer;
+    transform: translate(-50%, -100%); /* Vycentrování tlačítka a skrytí nahoře */
+    opacity: 0;
+    transition: transform 1s, opacity 1s;
+    pointer-events: none;
+  }
+  
+  #submit-button.show-button {
+    transform: translate(-50%, 0); /* Posunutí tlačítka dolů do viditelné oblasti */
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  #submit-button:hover {
+    opacity: 0.9;
+  }
+  
+  /* Odkazy "Mám účet" a "Chci účet" */
+  .links {
+    margin-top: 25px;
+    animation: fadeInUp 2s ease-out;
+  }
+  
+  .links a {
+    color: #1e90ff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 16px;
+    position: relative;
+  }
+  
+  .links a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #1e90ff;
+    left: 0;
+    bottom: -2px;
+    transition: width 0.3s;
+  }
+  
+  .links a:hover::after {
+    width: 100%;
+  }
+  
+  /* Modální okno */
+  .modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+  .modal-content {
+    background-color: #12243a;
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+  }
+  
+  .modal-content h2 {
+    color: #32CD32;
+    margin-bottom: 20px;
+  }
+  
+  .modal-content input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background-color: #1c3b57;
+    color: #fff;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+  }
+  
+  .modal-content button {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #1e90ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .modal-content button:hover {
+    background-color: #3ea0ff;
+  }
+  
+  .close {
+    color: #fff;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: #999;
+  }
+
+  .session-actions,
+.commander-toolbar {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.session-actions button,
+.commander-toolbar button {
+  background-color: #0077cc;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.session-actions button:hover,
+.commander-toolbar button:hover {
+  background-color: #005fa3;
+}
+
+  
+  /* Responzivita pro střední zařízení (tablety, menší laptopy) */
+@media (max-width: 1024px) {
+    .content h1 {
+        font-size: 64px;
+    }
+    h2 {
+        font-size: 32px;
+    }
+    .input-container {
+        width: 80%;
+    }
+}
+
+/* Responzivita pro mobilní zařízení */
+@media (max-width: 768px) {
+    .content {
+        padding: 20px;
+        height: auto;
+    }
+    .content h1 {
+        font-size: 48px;
+    }
+    h2 {
+        font-size: 24px;
+    }
+    .input-container {
+        width: 100%;
+    }
+    input[type="text"],
+    .modal-content input {
+        font-size: 16px;
+        padding: 12px;
+    }
+    #submit-button {
+        font-size: 16px;
+        padding: 10px 0;
+    }
+    .links a {
+        font-size: 14px;
+    }
+    .orb {
+        display: none; /* Skrýt orbitu na mobilu pro lepší výkon */
+    }
+    .modal-content {
+        margin: 20% auto;
+        width: 90%;
+    }
+}
+
+/* Responzivita pro velmi malé zařízení (smartphony) */
+@media (max-width: 480px) {
+    .content h1 {
+        font-size: 40px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+}
+  
+  /* Animace */
+  @keyframes slowGlow {
+    0% {
+      text-shadow: 0 0 10px #32CD32;
+    }
+    50% {
+      text-shadow: 0 0 20px #32CD32, 0 0 30px #32CD32;
+    }
+    100% {
+      text-shadow: 0 0 10px #32CD32;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes orbit {
+    0% {
+      transform: rotate(0deg) translateX(160px) rotate(0deg);
+    }
+    80% {
+      transform: rotate(360deg) translateX(160px) rotate(-360deg);
+    }
+    100% {
+      transform: rotate(360deg) translateX(160px) rotate(-360deg);
+    }
+  }
+  

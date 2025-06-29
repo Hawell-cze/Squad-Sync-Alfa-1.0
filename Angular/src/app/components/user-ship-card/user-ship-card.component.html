@@ -1,0 +1,5 @@
+<div class="card" [ngStyle]="{'border-color': borderColor}" (click)="onClick()">
+  <img src="/images/fighter-icon.svg" alt="Stíhačka" class="fighter-image" />
+  <div class="nickname">{{ member?.userName }}</div>
+  <p>{{ member?.status }}</p>
+</div>

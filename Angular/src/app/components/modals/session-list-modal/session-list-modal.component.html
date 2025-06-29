@@ -1,0 +1,46 @@
+<div class="modal" *ngIf="isOpen" (click)="closeModal()">
+  <div class="modal-content" (click)="stopPropagation($event)">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2 *ngIf="mode === 'all'">Všechny dostupné session</h2>
+    <h2 *ngIf="mode === 'user'">Sessiony, ve kterých jsi člen</h2>
+    <h2 *ngIf="mode === 'commander'">Tvoje velící sessiony</h2>
+    <div *ngIf="isLoading" class="loader-container">
+      <app-ui-loader></app-ui-loader>
+    </div>
+    <div *ngIf="!isJoining && sessions.length > 0">
+    <table *ngIf="sessions.length > 0">
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Název</th>
+          <th>Velitel</th>
+          <th>Počet členů</th>
+          <th>Akce</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let session of sessions">
+          <td>{{ session.token }}</td>
+          <td>{{ session.sessionName }}</td>
+          <td>{{ session.commanderUserName }}</td>
+          <td>{{ session.userCount }}</td>
+          <td>
+            <button (click)="goToCommander(session.token)">Připojit</button>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+<div *ngIf="isJoining">
+  <h3>Čeká se na potvrzení velitelem...</h3>
+  <p class="join-status-msg">{{ joinStatusMessage }}</p>
+  <app-ui-loader></app-ui-loader>
+  <button (click)="cancelJoin()">Zrušit žádost</button>
+</div>
+    <p *ngIf="!isLoading && sessions.length === 0" class="no-results">
+      Žádné session nenalezeny.
+    </p>
+  </div>
+</div>

@@ -1,0 +1,127 @@
+/* Stylování modálního okna pro přihlášení */
+/* Můžeme zkopírovat relevantní styly z Home.css */
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+.modal-content {
+  background-color: #12243a;
+  padding: 16px;
+  width: 90%;
+  min-width: 280px;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow: auto;
+  text-align: center;
+  border-radius: 8px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+  
+  .modal-content h2 {
+    color: #32CD32;
+    margin-bottom: 20px;
+  }
+  
+  .modal-content input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background-color: #1c3b57;
+    color: #fff;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+  }
+  
+  .modal-content button {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #1e90ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .modal-content button:hover {
+    background-color: #3ea0ff;
+  }
+  
+  .close {
+    color: #fff;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: #999;
+  }
+  
+  .success-msg {
+  color: #00cc66;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.error-msg {
+  color: #ff4444;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.result p {
+  color: #fff;
+  margin: 10px 0;
+}
+
+.result button {
+  margin-top: 10px;
+  width: auto;
+  padding: 10px 15px;
+  background-color: #00cc66;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.result button:hover {
+  background-color: #00b35a;
+}
+
+.error-msg {
+  color: #ff4444;
+  margin-top: 10px;
+}
+
+.loader-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}

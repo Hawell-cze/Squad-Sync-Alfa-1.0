@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle at center, #0d1b2a, #020c1b);
+    color: #fff;
+}
